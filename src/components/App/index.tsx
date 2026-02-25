@@ -2,7 +2,7 @@ import logo from './logo.svg';
 // import "./App.css";
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import { Button } from 'components/Button';
 import { Label } from 'components/Label';
 const spinAnimation = keyframes`
@@ -48,37 +48,75 @@ const Title = styled.h1`
   margin-bottom: 32px;
 `;
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const sub = () => {
-    setCounter(counter - 1);
-  };
-  const add = () => {
-    setCounter(counter + 1);
+// function App() {
+//   const [counter, setCounter] = useState(0);
+//   const sub = () => {
+//     setCounter(counter - 1);
+//   };
+//   const add = () => {
+//     setCounter(counter + 1);
+//   };
+
+//   return (
+//     <Container>
+//       <Header>
+//         <AppLogo src={logo} alt="logo" />
+//         <p>
+//           Edit <code>src/App.tsx</code> and save to reload.
+//         </p>
+//         <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+//           Learn React{' '}
+//         </AppLink>
+//       </Header>
+//       <Title>Counter App</Title>
+//       <Contents>
+//         <Button label="-" onClick={sub} />
+//         <Label data={counter} />
+//         <Button label="+" onClick={add} />
+//       </Contents>
+//     </Container>
+//   );
+// }
+type Props = Record<string, never>;
+interface State {
+  readonly counter: number;
+}
+
+export class App extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      counter: 0,
+    };
+  }
+
+  private sub = () => {
+    const { counter } = this.state;
+    this.setState({
+      counter: counter - 1,
+    });
   };
 
-  return (
-    // <div className="App">
-    <Container>
-      <Header>
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <AppLogo src={logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React{' '}
-        </AppLink>
-      </Header>
-      <Title>Counter App</Title>
-      <Contents>
-        <Button label="-" onClick={sub} />
-        <Label data={counter} />
-        <Button label="+" onClick={add} />
-      </Contents>
-    </Container>
-    // </div>
-  );
+  private add = () => {
+    const { counter } = this.state;
+    this.setState({
+      counter: counter + 1,
+    });
+  };
+
+  render() {
+    const { counter } = this.state;
+    return (
+      <Container>
+        <Title>Counter App</Title>{' '}
+        <Contents>
+          <Button label="-" onClick={this.sub} /> <Label data={counter} />
+          <Button label="+" onClick={this.add} />
+        </Contents>
+      </Container>
+    );
+  }
 }
 
 export default App;

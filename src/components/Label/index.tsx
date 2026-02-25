@@ -1,22 +1,22 @@
 import styled from '@emotion/styled';
 import { Component } from 'react';
 
-const Conatiner = styled.span`
-  margin: 0 16px;
+const Conatiner = styled.div`
+  flex: 1;
   font-size: 1.2rem;
 `;
 
 interface Props {
-  readonly data: number;
+  readonly data: number | string;
 }
 
-// export const Label = ({ data }: Props) => {
-//   return <Conatiner>{data}</Conatiner>;
-// };
+export const Label = ({ data }: Props) => {
+  return <Conatiner>{data}</Conatiner>;
+};
 
-export class Label extends Component<Props> {
-  render() {
-    const { data } = this.props;
-    return <Conatiner>{data}</Conatiner>;
-  }
-}
+// export class Label extends Component<Props> {
+//   render() {
+//     const { data } = this.props;
+//     return <Conatiner>{data}</Conatiner>;
+//   }
+// }

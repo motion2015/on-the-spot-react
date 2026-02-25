@@ -4,8 +4,11 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import { Component, ErrorInfo, useState } from 'react';
 import { Button } from 'components/Button';
-import { Label } from 'components/Label';
 import { IScriptSnapshot } from 'typescript';
+import { Title } from 'components/Title';
+import { Label } from 'components/Label';
+import { TodoItem } from 'components/TodoITem';
+import TodoList from 'components/TodoList';
 
 const spinAnimation = keyframes`
 from {
@@ -17,7 +20,12 @@ from {
 `;
 
 const Container = styled.div`
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
 `;
 
 const Header = styled.header`
@@ -46,39 +54,45 @@ const Contents = styled.div`
   justify-content: center;
 `;
 
-const Title = styled.h1`
-  margin-bottom: 32px;
-`;
+// const Title = styled.h1`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// `;
 
-// function App() {
-//   const [counter, setCounter] = useState(0);
-//   const sub = () => {
-//     setCounter(counter - 1);
-//   };
-//   const add = () => {
-//     setCounter(counter + 1);
-//   };
+function App() {
+  const [counter, setCounter] = useState(0);
+  // const sub = () => {
+  //   setCounter(counter - 1);
+  // };
+  // const add = () => {
+  //   setCounter(counter + 1);
+  // };
 
-//   return (
-//     <Container>
-//       <Header>
-//         <AppLogo src={logo} alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-//           Learn React{' '}
-//         </AppLink>
-//       </Header>
-//       <Title>Counter App</Title>
-//       <Contents>
-//         <Button label="-" onClick={sub} />
-//         <Label data={counter} />
-//         <Button label="+" onClick={add} />
-//       </Contents>
-//     </Container>
-//   );
-// }
+  return (
+    <Container>
+      {/* <Header>
+        <AppLogo src={logo} alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <AppLink href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+          Learn React{' '}
+        </AppLink>
+      </Header>
+      <Title>Counter App</Title>
+      <Contents>
+        <Button label="-" onClick={sub} />
+        <Label data={counter} />
+        <Button label="+" onClick={add} />
+      </Contents> */}
+      <Title label="할 일 목록" />
+      <TodoList />
+    </Container>
+  );
+}
+
+/* =====  클래스 컴포넌트 ======
 type Props = Record<string, never>;
 interface State {
   readonly counter: number;
@@ -168,6 +182,9 @@ export class App extends Component<Props, State> {
     console.log('error', error);
     console.log('info', info);
   }
+  
 }
+
+ */
 
 export default App;

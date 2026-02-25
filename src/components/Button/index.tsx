@@ -28,7 +28,7 @@ interface Props {
 
 export class Button extends Component<Props> {
   render() {
-    const {label, onClick} = this.props;
-    return <Container onClick={onClick}>{label}</Container>
+    const { label, onClick } = this.props;
+    return <Container onClick={onClick}>{label}</Container>;
   }
 }

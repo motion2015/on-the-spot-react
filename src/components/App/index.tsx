@@ -2,9 +2,11 @@ import logo from './logo.svg';
 // import "./App.css";
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { Component, useState } from 'react';
+import { Component, ErrorInfo, useState } from 'react';
 import { Button } from 'components/Button';
 import { Label } from 'components/Label';
+import { IScriptSnapshot } from 'typescript';
+
 const spinAnimation = keyframes`
 from {
       transfrom: rotate(0deg);
@@ -116,6 +118,55 @@ export class App extends Component<Props, State> {
         </Contents>
       </Container>
     );
+  }
+
+  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+    console.log('getDerivedStateFromProps');
+    console.log('nextProps', nextProps);
+    console.log('prevState', prevState);
+    return null;
+  }
+  componentDidMount() {
+    console.log('componentDidMount>>>');
+  }
+
+  getSnapshotBeforeUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>) {
+    console.log('getSnapshotBeforeUpdate');
+    console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+
+    return {
+      testData: true,
+    };
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<Props>,
+    prevState: Readonly<State>,
+    snapshot?: IScriptSnapshot,
+  ): void {
+    console.log('componentDidUpdate');
+    console.log('prevProps', prevProps);
+    console.log('prevState', prevState);
+    console.log('snapshot', snapshot);
+  }
+
+  shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<State>): boolean {
+    console.log('shouldComponentUpdate');
+    console.log('nextProps', nextProps);
+    console.log('nextState', nextState);
+    console.log('nextProps', nextProps);
+    return true;
+  }
+
+  componentWillUnmount(): void {
+    console.log('componentWillUnmount');
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo): void {
+    console.log('componentDidCatch');
+    console.log('error', error);
+    console.log('info', info);
   }
 }
 

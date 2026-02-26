@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { DataView } from 'components/DataView';
+import { TextInput } from 'components/TextInput';
 
 const Container = styled.div`
   height: 100vh;
@@ -12,6 +13,7 @@ const Container = styled.div`
 `;
 
 function App() {
+  const [todo, setTodo] = useState('');
   const [toDoList, setToDoList] = useState([
     '리액트 공부하기',
     '12시 전에 자기',
@@ -27,6 +29,7 @@ function App() {
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
+      <TextInput value={todo} onChange={setTodo} />
     </Container>
   );
 }

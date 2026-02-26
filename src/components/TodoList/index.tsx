@@ -1,21 +1,29 @@
 import styled from '@emotion/styled';
 import { TodoItem } from 'components/TodoITem';
 import React from 'react';
-
+interface Props {
+  readonly toDoList: ReadonlyArray<string>;
+  readonly onDelete?: (todo: string) => void;
+}
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-item: flex-start;
+  
 `;
 
-const TodoList = () => {
+export const TodoList = ({ toDoList, onDelete }: Props) => {
   return (
     <Container>
-      <TodoItem label="리액트 공부하기" />
-      <TodoItem label="12시 전에 자기" />
-      <TodoItem label="06: 35분에 일어나기" />
+      {toDoList.map((todo) => (
+        <TodoItem
+          key={todo}
+          label={todo}
+          onDelete={() => {
+            if (typeof onDelete === 'function') onDelete(todo);
+          }}
+        />
+      ))}
     </Container>
   );
 };
-
-export default TodoList;

@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { DataView } from 'components/DataView';
 import { TextInput } from 'components/TextInput';
 import { Button } from 'components/BasicButton';
+import { Title } from 'components/Title';
+import { ToDoInput } from 'components/ToDoInput';
+import { log } from 'node:console';
+import { logDOM } from '@testing-library/dom';
 
 const Container = styled.div`
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,7 +32,7 @@ function App() {
     setToDoList(toDoList.filter((item) => item !== toDo));
   };
 
-  const onAdd = () => {
+  const onAdd = (toDo: string) => {
     if (toDo === '') return;
     setToDoList([...toDoList, toDo]);
     setTodo('');
@@ -36,8 +41,7 @@ function App() {
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <TextInput value={toDo} onChange={setTodo} />
-      <Button label="추가" color="#304ffe" onClick={onAdd} />
+      <ToDoInput onAdd={onAdd} />
     </Container>
   );
 }

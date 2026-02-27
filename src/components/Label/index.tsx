@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Component } from 'react';
 
 const Conatiner = styled.div`
   flex: 1;

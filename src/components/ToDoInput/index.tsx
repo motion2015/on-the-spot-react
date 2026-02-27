@@ -58,7 +58,15 @@ export const ToDoInput = ({ onAdd }: Props) => {
       <Contents>
         <Title label="할 일 추가" />
         <InputContainer>
-          <TextInput value={toDo} onChange={setTodo} />
+          <TextInput
+            value={toDo}
+            onChange={setTodo}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                onAddTodo();
+              }
+            }}
+          />
           <Button label="추가" color="#304ffe" onClick={onAddTodo} />
         </InputContainer>
       </Contents>

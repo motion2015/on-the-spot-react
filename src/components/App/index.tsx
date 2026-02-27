@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { DataView } from 'components/DataView';
 import { ToDoInput } from 'components/ToDoInput';
-import { Button } from 'components/BasicButton';
+import { ShowInputButton } from 'components/ShowInputButton/inex';
 
 const Container = styled.div`
   position: relative;
@@ -12,12 +12,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #eeeeee;
-`;
-const ShowInputButton = styled.div`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1;
 `;
 
 function App() {
@@ -44,13 +38,7 @@ function App() {
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
 
-      <ShowInputButton>
-        <Button
-          label={showTodoInput ? '닫기' : '할 일 추가'}
-          color={showTodoInput ? undefined : '#304FFE'}
-          onClick={() => setShowTodoInput(!showTodoInput)}
-        />
-      </ShowInputButton>
+      <ShowInputButton show={showTodoInput} onClick={() => setShowTodoInput(!showTodoInput)} />
       {showTodoInput && <ToDoInput onAdd={onAdd} />}
     </Container>
   );

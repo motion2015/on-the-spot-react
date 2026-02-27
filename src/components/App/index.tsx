@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { DataView } from 'components/DataView';
+import { InputContainer } from 'components/InputContainer';
 
 const Container = styled.div`
   position: relative;
@@ -11,8 +12,6 @@ const Container = styled.div`
   justify-content: center;
   background-color: #eeeeee;
 `;
-
-const InputContainer = styled.div``;
 
 function App() {
   const [toDoList, setToDoList] = useState([

@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { DataView } from 'components/DataView';
-import { ToDoInput } from 'components/ToDoInput';
-import { ShowInputButton } from 'components/ShowInputButton/inex';
 
 const Container = styled.div`
   position: relative;
@@ -14,8 +12,9 @@ const Container = styled.div`
   background-color: #eeeeee;
 `;
 
+const InputContainer = styled.div``;
+
 function App() {
-  const [showTodoInput, setShowTodoInput] = useState(false);
   const [toDoList, setToDoList] = useState([
     '리액트 공부하기',
     '12시 전에 자기',
@@ -31,15 +30,12 @@ function App() {
   const onAdd = (newToDo: string) => {
     if (newToDo === '') return;
     setToDoList([...toDoList, newToDo]);
-    setShowTodoInput(false);
   };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-
-      <ShowInputButton show={showTodoInput} onClick={() => setShowTodoInput(!showTodoInput)} />
-      {showTodoInput && <ToDoInput onAdd={onAdd} />}
+      <InputContainer onAdd={onAdd} />
     </Container>
   );
 }

@@ -21,7 +21,6 @@ const ShowInputButton = styled.div`
 `;
 
 function App() {
-  const [toDo, setTodo] = useState('');
   const [showTodoInput, setShowTodoInput] = useState(false);
   const [toDoList, setToDoList] = useState([
     '리액트 공부하기',
@@ -29,16 +28,15 @@ function App() {
     '06: 35분에 일어나기',
   ]);
 
-  const onDelete = (toDo: string) => {
-    console.log(toDo);
+  const onDelete = (todoToDelete: string) => {
+    console.log(todoToDelete);
 
-    setToDoList(toDoList.filter((item) => item !== toDo));
+    setToDoList(toDoList.filter((item) => item !== todoToDelete));
   };
 
-  const onAdd = (toDo: string) => {
-    if (toDo === '') return;
-    setToDoList([...toDoList, toDo]);
-    setTodo('');
+  const onAdd = (newToDo: string) => {
+    if (newToDo === '') return;
+    setToDoList([...toDoList, newToDo]);
     setShowTodoInput(false);
   };
 

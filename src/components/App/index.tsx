@@ -1,12 +1,8 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { DataView } from 'components/DataView';
-import { TextInput } from 'components/TextInput';
-import { Button } from 'components/BasicButton';
-import { Title } from 'components/Title';
 import { ToDoInput } from 'components/ToDoInput';
-import { log } from 'node:console';
-import { logDOM } from '@testing-library/dom';
+import { Button } from 'components/BasicButton';
 
 const Container = styled.div`
   position: relative;
@@ -17,9 +13,16 @@ const Container = styled.div`
   justify-content: center;
   background-color: #eeeeee;
 `;
+const ShowInputButton = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+`;
 
 function App() {
   const [toDo, setTodo] = useState('');
+  const [showTodoInput, setShowTodoInput] = useState(false);
   const [toDoList, setToDoList] = useState([
     '리액트 공부하기',
     '12시 전에 자기',
@@ -36,12 +39,21 @@ function App() {
     if (toDo === '') return;
     setToDoList([...toDoList, toDo]);
     setTodo('');
+    setShowTodoInput(false);
   };
 
   return (
     <Container>
       <DataView toDoList={toDoList} onDelete={onDelete} />
-      <ToDoInput onAdd={onAdd} />
+
+      <ShowInputButton>
+        <Button
+          label={showTodoInput ? '닫기' : '할 일 추가'}
+          color={showTodoInput ? undefined : '#304FFE'}
+          onClick={() => setShowTodoInput(!showTodoInput)}
+        />
+      </ShowInputButton>
+      {showTodoInput && <ToDoInput onAdd={onAdd} />}
     </Container>
   );
 }

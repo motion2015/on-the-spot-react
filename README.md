@@ -44,3 +44,25 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+##
+
+```
+  // "dependencies": {
+  //   "@emotion/react": "^11.11.4",
+  //   "@emotion/styled": "^11.11.5",
+  //   "@testing-library/dom": "^10.1.0",
+  //   "@testing-library/jest-dom": "^6.4.5",
+  //   "@testing-library/react": "^15.0.7",
+  //   "@testing-library/user-event": "^14.5.2",
+  //   "@types/jest": "^29.5.12",
+  //   "@types/node": "^20.12.12",
+  //   "@types/react": "^18.3.3",
+  //   "@types/react-dom": "^18.3.0",
+  //   "react": "^18.3.1",
+  //   "react-dom": "^18.3.1",
+  //   "react-scripts": "5.0.1",
+  //   "typescript": "^5.4.5",
+  //   "web-vitals": "^4.0.0"
+  // },
+```

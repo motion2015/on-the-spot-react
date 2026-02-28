@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-item: flex-start;
-  
 `;
 
 export const TodoList = ({ toDoList, onDelete }: Props) => {

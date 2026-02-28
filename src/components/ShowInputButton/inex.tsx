@@ -10,11 +10,11 @@ const Container = styled.div`
 `;
 
 interface Props {
-    readonly show : boolean;
-    readonly onClick: ()=> void;
+  readonly show: boolean;
+  readonly onClick: () => void;
 }
 
-export const ShowInputButton = ({show, onClick}:Props) => {
+export const ShowInputButton = ({ show, onClick }: Props) => {
   return (
     <Container>
       <Button

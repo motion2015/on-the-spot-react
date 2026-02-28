@@ -2,20 +2,16 @@ import { ShowInputButton } from 'components/ShowInputButton/inex';
 import { ToDoInput } from 'components/ToDoInput';
 import { useState } from 'react';
 
-interface Props {
-  readonly onAdd: (todo: string) => void;
-}
-
-export const InputContainer = ({ onAdd }: Props) => {
+export const InputContainer = () => {
   const [showTodoInput, setShowTodoInput] = useState(false);
-  const onAddTodo = (todo: string) => {
-    onAdd(todo);
+  const onClose = ()=>{
     setShowTodoInput(false);
-  };
+  }
+
   return (
     <>
       <ShowInputButton show={showTodoInput} onClick={() => setShowTodoInput(!showTodoInput)} />
-      {showTodoInput && <ToDoInput onAdd={onAddTodo} />}
+      {showTodoInput && <ToDoInput onClose={onClose} />}
     </>
   );
 };

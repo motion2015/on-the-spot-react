@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
 import { DataView } from 'components/DataView';
 import { InputContainer } from 'components/InputContainer';
+import { TodoListContextProvider} from 'contexts/TodoList';
 
 const Container = styled.div`
   position: relative;
@@ -14,27 +14,12 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [toDoList, setToDoList] = useState([
-    '리액트 공부하기',
-    '12시 전에 자기',
-    '06: 35분에 일어나기',
-  ]);
-
-  const onDelete = (todoToDelete: string) => {
-    console.log(todoToDelete);
-
-    setToDoList(toDoList.filter((item) => item !== todoToDelete));
-  };
-
-  const onAdd = (newToDo: string) => {
-    if (newToDo === '') return;
-    setToDoList([...toDoList, newToDo]);
-  };
-
   return (
     <Container>
-      <DataView toDoList={toDoList} onDelete={onDelete} />
-      <InputContainer onAdd={onAdd} />
+      <TodoListContextProvider>
+        <DataView />
+        <InputContainer />
+      </TodoListContextProvider>
     </Container>
   );
 }
